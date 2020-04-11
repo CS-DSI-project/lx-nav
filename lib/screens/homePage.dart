@@ -59,7 +59,7 @@ Widget roomPageButton(context) {
       print('You Click Sign Up');
 
       MaterialPageRoute materialPageRoute =
-      MaterialPageRoute(builder: (BuildContext context) => Myroom());
+      MaterialPageRoute(builder: (BuildContext context) => MyRoom());
       Navigator.of(context).push(materialPageRoute);
     },
   );
