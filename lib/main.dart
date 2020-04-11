@@ -13,7 +13,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   Route<Object> get materialPageRoute => null;
   @override
   Widget build(BuildContext context) {
@@ -39,24 +38,6 @@ class _MyAppState extends State<MyApp> {
 class AfterSplash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-          title: new Text("Welcome In SplashScreen Package"),
-          automaticallyImplyLeading: false
-      ),
-      body: new Center(
-        child: RaisedButton(
-          onPressed:(){
-            MaterialPageRoute materialPageRoute =
-            MaterialPageRoute(builder: (BuildContext context) => HomePage());
-
-            Navigator.of(context).push(materialPageRoute);
-
-          }
-
-        ),
-
-      ),
-    );
+    return HomePage();
   }
 }

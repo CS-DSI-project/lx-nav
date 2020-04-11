@@ -8,7 +8,6 @@ class Myroom extends StatelessWidget {
 }
 
 class MyHome extends StatelessWidget {
-  Route<Object> get materialPageRoute => null;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

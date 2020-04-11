@@ -14,8 +14,9 @@ class MyHome extends StatelessWidget {
     return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
-
             title: Text('Register'),
-          ),body: Text('404'));
+          ),
+        body: Text('404')
+    );
   }
 }

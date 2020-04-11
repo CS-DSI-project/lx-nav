@@ -11,7 +11,6 @@ class HomePage extends StatelessWidget {
 }
 
 class MyHome extends StatelessWidget {
-  Route<Object> get materialPageRoute => null;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,11 +45,8 @@ Widget errorPageButton(context) {
   return RaisedButton(
     child: Text('ERROR PAGE'),
     onPressed: () {
-      print('You Click Sign Up');
-
       MaterialPageRoute materialPageRoute =
       MaterialPageRoute(builder: (BuildContext context) => MyError());
-
       Navigator.of(context).push(materialPageRoute);
     },
   );
