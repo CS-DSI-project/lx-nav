@@ -22,33 +22,20 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: Text('NavKMUTT'),
       ),
-      body: Column(
-        children: [showPic(), showButton(context)],
+      body: Center(
+        child: showButton(context),
       ),
     );
   }
 }
 
-Widget showPic() {
-  return Container(
-    child: Image.asset('images/c2.png'),
-  );
-}
-
 Widget showButton(context) {
   return Column(
     mainAxisSize: MainAxisSize.min,
-    children: <Widget>[roomPageButton(context), errorPageButton(context)],
-  );
-}
-
-Widget errorPageButton(context) {
-  return RaisedButton(
-    child: Text('ERROR PAGE'),
-    onPressed: () {
-      MaterialPageRoute materialPageRoute = MaterialPageRoute(builder: (BuildContext context) => Error());
-      Navigator.of(context).push(materialPageRoute);
-    },
+    children: <Widget>[
+      roomPageButton(context),
+      errorPageButton(context)
+    ],
   );
 }
 
@@ -57,6 +44,16 @@ Widget roomPageButton(context) {
     child: Text('Room Page'),
     onPressed: () {
       MaterialPageRoute materialPageRoute = MaterialPageRoute(builder: (BuildContext context) => Room());
+      Navigator.of(context).push(materialPageRoute);
+    },
+  );
+}
+
+Widget errorPageButton(context) {
+  return RaisedButton(
+    child: Text('Error Page'),
+    onPressed: () {
+      MaterialPageRoute materialPageRoute = MaterialPageRoute(builder: (BuildContext context) => Error());
       Navigator.of(context).push(materialPageRoute);
     },
   );

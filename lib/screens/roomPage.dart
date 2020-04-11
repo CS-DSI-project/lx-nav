@@ -7,7 +7,23 @@ class Room extends StatelessWidget {
         appBar: AppBar(
           title: Text('Event/Room'),
         ),
-        backgroundColor: Colors.white,
-        body: Text('404'));
+        body: Container(
+          padding: EdgeInsets.all(10),
+          child: ListView(
+            children: <Widget>[
+              Card(
+                elevation: 5,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                  child: Text(
+                    'LX-101',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ),
+              ),
+            ],
+          )
+        )
+    );
   }
 }

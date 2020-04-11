@@ -7,7 +7,7 @@ class Error extends StatelessWidget {
         appBar: AppBar(
           title: Text('Error'),
         ),
-        backgroundColor: Colors.white,
-        body: Text('404'));
+        body: Text('404')
+    );
   }
 }
