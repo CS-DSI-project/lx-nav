@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lxnav/error.dart';
-import 'package:lxnav/roomPage.dart';
+import 'package:lxnav/screens/error.dart';
+import 'package:lxnav/screens/roomPage.dart';
 
 
 class MyApp extends StatelessWidget {
@@ -37,7 +37,6 @@ Widget showButton(context) {
     mainAxisSize: MainAxisSize.min,
     children: <Widget>[
       roomPageButton(context),
-
       errorPageButton(context)
     ],
   );
