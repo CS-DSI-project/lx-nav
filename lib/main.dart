@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
+import 'package:lxnav/screens/homePage.dart';
 void main(){
   runApp(new MaterialApp(
     home: new MyApp(),
@@ -12,8 +13,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+  Route<Object> get materialPageRoute => null;
   @override
   Widget build(BuildContext context) {
+
     return new SplashScreen(
         seconds: 3,
         navigateAfterSeconds: new AfterSplash(),
@@ -41,11 +45,16 @@ class AfterSplash extends StatelessWidget {
           automaticallyImplyLeading: false
       ),
       body: new Center(
-        child: new Text("Done!",
-          style: new TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 30.0
-          ),),
+        child: RaisedButton(
+          onPressed:(){
+            MaterialPageRoute materialPageRoute =
+            MaterialPageRoute(builder: (BuildContext context) => HomePage());
+
+            Navigator.of(context).push(materialPageRoute);
+
+          }
+
+        ),
 
       ),
     );

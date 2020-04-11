@@ -3,7 +3,7 @@ import 'package:lxnav/screens/error.dart';
 import 'package:lxnav/screens/roomPage.dart';
 
 
-class MyApp extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(title: 'Welcome to Flutter', home: MyHome());
@@ -49,7 +49,7 @@ Widget errorPageButton(context) {
       print('You Click Sign Up');
 
       MaterialPageRoute materialPageRoute =
-      MaterialPageRoute(builder: (BuildContext context) => Error());
+      MaterialPageRoute(builder: (BuildContext context) => MyError());
 
       Navigator.of(context).push(materialPageRoute);
     },
@@ -63,8 +63,7 @@ Widget roomPageButton(context) {
       print('You Click Sign Up');
 
       MaterialPageRoute materialPageRoute =
-      MaterialPageRoute(builder: (BuildContext context) => Error());
-
+      MaterialPageRoute(builder: (BuildContext context) => Myroom());
       Navigator.of(context).push(materialPageRoute);
     },
   );
