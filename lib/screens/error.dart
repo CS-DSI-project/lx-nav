@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MyError extends StatelessWidget {
+class Error extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromRGBO(255, 102, 0, 1.0),
+          title: Text('Error'),
         ),
         backgroundColor: Colors.white,
         body: Text('404'));
-
   }
 }

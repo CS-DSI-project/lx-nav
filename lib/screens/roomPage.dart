@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MyRoom extends StatelessWidget {
+class Room extends StatelessWidget {
   @override
-Widget build(BuildContext context){
-      return Scaffold(
+  Widget build(BuildContext context) {
+    return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromRGBO(255, 102, 0, 1.0),
+          title: Text('Event/Room'),
         ),
         backgroundColor: Colors.white,
         body: Text('404'));
-
-}
+  }
 }

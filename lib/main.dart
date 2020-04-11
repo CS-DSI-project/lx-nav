@@ -16,7 +16,6 @@ class _MyAppState extends State<MyApp> {
   Route<Object> get materialPageRoute => null;
   @override
   Widget build(BuildContext context) {
-
     return new SplashScreen(
         seconds: 1,
         navigateAfterSeconds: new AfterSplash(),
@@ -25,7 +24,8 @@ class _MyAppState extends State<MyApp> {
               fontWeight: FontWeight.bold,
               fontSize: 20.0,
             color: Color.fromRGBO(255, 102, 0, 1.0)
-          ),),
+          ),
+        ),
         image: new Image.network('https://i.imgur.com/TyCSG9A.png'),
         backgroundColor: Colors.white,
         styleTextUnderTheLoader: new TextStyle(),
