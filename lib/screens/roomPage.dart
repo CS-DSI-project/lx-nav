@@ -21,6 +21,36 @@ class Room extends StatelessWidget {
                   ),
                 ),
               ),
+              Card(
+                elevation: 5,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                  child: Text(
+                    'LX-102',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 5,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                  child: Text(
+                    'LX-103',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 5,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                  child: Text(
+                    'LX-104',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ),
+              ),
             ],
           )
         )
