@@ -57,10 +57,10 @@ Widget errorPageButton(context) {
 }
 Widget secureButton(context) {
   return RaisedButton(
-    child: Text('Secure Do not touch it'),
+    child: Text('Secure Do not touch it do not work'),
     onPressed: () {
-      MaterialPageRoute materialPageRoute = MaterialPageRoute(builder: (BuildContext context) => ItemsWidget());
-      Navigator.of(context).push(materialPageRoute);
+//      MaterialPageRoute materialPageRoute = MaterialPageRoute(builder: (BuildContext context) => ItemsWidget());
+//      Navigator.of(context).push(materialPageRoute);
     },
   );
 }

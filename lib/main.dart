@@ -4,7 +4,9 @@ import 'package:lxnav/screens/homePage.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:async';
 import 'dart:math';
-void main(){
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+Future main() async{
+  await DotEnv().load('.env');
   runApp(new MaterialApp(
     home: new MyApp(),
   ));
