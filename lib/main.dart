@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:lxnav/screens/homePage.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'dart:async';
+import 'dart:math';
 void main(){
   runApp(new MaterialApp(
     home: new MyApp(),

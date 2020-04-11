@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lxnav/screens/error.dart';
 import 'package:lxnav/screens/roomPage.dart';
-
+import 'package:lxnav/secureFile.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -32,10 +32,7 @@ class Home extends StatelessWidget {
 Widget showButton(context) {
   return Column(
     mainAxisSize: MainAxisSize.min,
-    children: <Widget>[
-      roomPageButton(context),
-      errorPageButton(context)
-    ],
+    children: <Widget>[roomPageButton(context), errorPageButton(context),secureButton(context)],
   );
 }
 
@@ -54,6 +51,15 @@ Widget errorPageButton(context) {
     child: Text('Error Page'),
     onPressed: () {
       MaterialPageRoute materialPageRoute = MaterialPageRoute(builder: (BuildContext context) => Error());
+      Navigator.of(context).push(materialPageRoute);
+    },
+  );
+}
+Widget secureButton(context) {
+  return RaisedButton(
+    child: Text('Secure Do not touch it'),
+    onPressed: () {
+      MaterialPageRoute materialPageRoute = MaterialPageRoute(builder: (BuildContext context) => ItemsWidget());
       Navigator.of(context).push(materialPageRoute);
     },
   );
