@@ -19,12 +19,13 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
 
     return new SplashScreen(
-        seconds: 3,
+        seconds: 1,
         navigateAfterSeconds: new AfterSplash(),
         title: new Text('Welcome In SplashScreen',
           style: new TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 20.0
+              fontSize: 20.0,
+            color: Color.fromRGBO(255, 102, 0, 1.0)
           ),),
         image: new Image.network('https://i.imgur.com/TyCSG9A.png'),
         backgroundColor: Colors.white,
@@ -39,24 +40,6 @@ class _MyAppState extends State<MyApp> {
 class AfterSplash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-          title: new Text("Welcome In SplashScreen Package"),
-          automaticallyImplyLeading: false
-      ),
-      body: new Center(
-        child: RaisedButton(
-          onPressed:(){
-            MaterialPageRoute materialPageRoute =
-            MaterialPageRoute(builder: (BuildContext context) => HomePage());
-
-            Navigator.of(context).push(materialPageRoute);
-
-          }
-
-        ),
-
-      ),
-    );
+    return HomePage();
   }
 }
