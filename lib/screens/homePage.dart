@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lxnav/screens/error.dart';
 import 'package:lxnav/screens/roomPage.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:lxnav/secureFile.dart';
 class HomePage extends StatelessWidget {
   @override
@@ -9,7 +10,7 @@ class HomePage extends StatelessWidget {
         title: 'Welcome to Flutter',
         home: Home(),
         theme: ThemeData(
-          primarySwatch: Colors.orange,
+          primaryColor: Hexcolor('#f98113'),
         ),
     );
   }
