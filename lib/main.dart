@@ -4,6 +4,7 @@ import 'package:lxnav/screens/homePage.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:async';
 import 'dart:math';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 Future main() async{
   await DotEnv().load('.env');

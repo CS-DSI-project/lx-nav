@@ -5,7 +5,7 @@ import 'package:lxnav/screens/error.dart';
 import 'package:lxnav/screens/roomPage.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:lxnav/secureFile.dart';
-
+import 'package:lxnav/screens/ggMap.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
   final _pageOptions = [
     Text('Home'),
     Text('Search'),
-    Text("Map"),
+    MapSample(),
     Text('Contact')
   ];
   @override
