@@ -1,20 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget{
+class Contact extends StatefulWidget{
   @override
-  _HomeState createState() => _HomeState();
+  _ContactState createState() => _ContactState();
 }
 
-class _HomeState extends State<Home>{
+class _ContactState extends State<Contact>{
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
-        title: Text("NavKMUTT"),
+        title: Text("Contact"),
       ),
       body: Center(
-        child: Text("Homepage"),
+        child: Text("Contact"),
       ),
     );
   }

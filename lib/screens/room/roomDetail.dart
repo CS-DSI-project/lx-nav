@@ -6,7 +6,7 @@ class Detail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return new Scaffold(
       appBar: AppBar(
         title: Text(name),
       ),
@@ -17,8 +17,8 @@ class Detail extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
             ),
-            child: new Center(
-              child: new Text(
+            child: Center(
+              child: Text(
                 "Picture of " + name + " room",
                 style: TextStyle(fontSize: 18),
                 textAlign: TextAlign.center,
