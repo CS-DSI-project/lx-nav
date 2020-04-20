@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong/latlong.dart';
 import 'package:lxnav/screens/error.dart';
-import 'package:lxnav/screens/roomPage.dart';
+import 'package:lxnav/screens/room/room.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:lxnav/secureFile.dart';
-import 'package:lxnav/screens/ggMap.dart';
+import 'package:lxnav/screens/map.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

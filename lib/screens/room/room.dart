@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lxnav/screens/roomDetailPage.dart';
+import 'package:lxnav/screens/room/roomDetail.dart';
 
 class Room extends StatelessWidget {
   @override
