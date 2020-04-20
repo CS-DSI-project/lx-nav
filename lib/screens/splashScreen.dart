@@ -12,16 +12,16 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return new SplashScreen(
-        seconds: 1,
+        seconds: 3,
         navigateAfterSeconds: new AfterSplash(),
-        title: new Text('Welcome In SplashScreen',
+        title: new Text('Welcome to NAVKMUTT',
           style: new TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20.0,
               color: Color.fromRGBO(255, 102, 0, 1.0)
           ),
         ),
-        image: new Image.network('https://i.imgur.com/TyCSG9A.png'),
+        image: new Image.asset("images/logoSplashpng.png",height: 150,width: 150,),
         backgroundColor: Colors.white,
         styleTextUnderTheLoader: new TextStyle(),
         photoSize: 100.0,
