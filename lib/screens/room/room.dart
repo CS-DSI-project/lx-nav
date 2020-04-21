@@ -15,7 +15,8 @@ class _RoomState extends State<Room>{
        ),
         body: Container(
             padding: EdgeInsets.all(10),
-            child: ListView(
+            child: GridView(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               children: <Widget>[
                 GestureDetector(
                   onTap: () {
@@ -24,14 +25,16 @@ class _RoomState extends State<Room>{
                     );
                   },
                   child: Card(
-                    elevation: 5,
+                    elevation: 10,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 20, horizontal: 10),
-                      child: Text(
-                        'LX-101',
-                        style: TextStyle(fontSize: 15),
-                      ),
+                      child: Center(
+                        child: Text(
+                          'LX-101',
+                          style: TextStyle(fontSize: 18.5, fontWeight: FontWeight.w500),
+                        ),
+                      )
                     ),
                   ),
                 ),
@@ -42,14 +45,16 @@ class _RoomState extends State<Room>{
                     );
                   },
                   child: Card(
-                    elevation: 5,
+                    elevation: 10,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 20, horizontal: 10),
-                      child: Text(
-                        'LX-102',
-                        style: TextStyle(fontSize: 15),
-                      ),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 20, horizontal: 10),
+                        child: Center(
+                          child: Text(
+                            'LX-102',
+                            style: TextStyle(fontSize: 18.5, fontWeight: FontWeight.w500),
+                          ),
+                        )
                     ),
                   ),
                 ),
@@ -60,14 +65,16 @@ class _RoomState extends State<Room>{
                     );
                   },
                   child: Card(
-                    elevation: 5,
+                    elevation: 10,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 20, horizontal: 10),
-                      child: Text(
-                        'LX-103',
-                        style: TextStyle(fontSize: 15),
-                      ),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 20, horizontal: 10),
+                        child: Center(
+                          child: Text(
+                            'LX-103',
+                            style: TextStyle(fontSize: 18.5, fontWeight: FontWeight.w500),
+                          ),
+                        )
                     ),
                   ),
                 ),
@@ -78,14 +85,16 @@ class _RoomState extends State<Room>{
                     );
                   },
                   child: Card(
-                    elevation: 5,
+                    elevation: 10,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 20, horizontal: 10),
-                      child: Text(
-                        'LX-104',
-                        style: TextStyle(fontSize: 15),
-                      ),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 20, horizontal: 10),
+                        child: Center(
+                          child: Text(
+                            'LX-104',
+                            style: TextStyle(fontSize: 18.5, fontWeight: FontWeight.w500),
+                          ),
+                        )
                     ),
                   ),
                 ),

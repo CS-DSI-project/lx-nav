@@ -36,16 +36,75 @@ class _HomeState extends State<Home> {
         title: Text("NavKMUTT"),
       ),
       body: Container(
-          child: Column(
+          child: ListView(
         children: <Widget>[
           CarouselSlider(
             options: CarouselOptions(
-              height: 200,
+              height: 200.0,
               autoPlay: true,
               aspectRatio: 2,
               enlargeCenterPage: true,
             ),
             items: imageSliders,
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(13.0, 10.0, 13.0, 13.0),
+            child: Text(
+              'Activities & News',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(13.0, 0, 13.0, 0),
+            child: Card(
+              elevation: 2,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                child: Text(
+                  'LX Opening Exhibition Changed Present Date',
+                ),
+              ),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(13.0, 0, 13.0, 0),
+            child: Card(
+              elevation: 2,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                child: Text(
+                  'KMUTT Fight Covid-19 Campaign',
+                ),
+              ),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(13.0, 0, 13.0, 0),
+            child: Card(
+              elevation: 2,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                child: Text(
+                  'Covid-19 Spread Around KMUTT',
+                ),
+              ),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(13.0, 0, 13.0, 0),
+            child: Card(
+              elevation: 2,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                child: Text(
+                  'KMUTT Associated With Hospital',
+                ),
+              ),
+            ),
           ),
         ],
       )),
