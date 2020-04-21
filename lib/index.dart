@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:lxnav/screens/calendar.dart';
 import 'package:lxnav/screens/homepage.dart';
-import 'package:lxnav/screens/search.dart';
-import 'package:lxnav/screens/contact.dart';
-import 'package:lxnav/screens/error.dart';
 import 'package:lxnav/screens/room/room.dart';
 import 'package:lxnav/screens/map.dart';
 class Index extends StatelessWidget {
