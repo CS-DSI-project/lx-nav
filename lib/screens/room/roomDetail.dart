@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Detail extends StatelessWidget {
+class RoomDetail extends StatelessWidget {
   final String name;
-  Detail(this.name);
+  RoomDetail(this.name);
 
   @override
   Widget build(BuildContext context) {
@@ -10,21 +10,23 @@ class Detail extends StatelessWidget {
       appBar: AppBar(
         title: Text(name),
       ),
-      body: Container(
-        height: 200.0,
-        color: Colors.transparent,
+      body: SafeArea(
         child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-            ),
-            child: Center(
-              child: Text(
-                "Picture of " + name + " room",
-                style: TextStyle(fontSize: 18),
-                textAlign: TextAlign.center,
+          height: 200.0,
+          color: Colors.transparent,
+          child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
               ),
-            )),
-      ),
+              child: Center(
+                child: Text(
+                  "Picture of " + name + " room",
+                  style: TextStyle(fontSize: 18),
+                  textAlign: TextAlign.center,
+                ),
+              )),
+        ),
+      )
     );
   }
 }

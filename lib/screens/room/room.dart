@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:lxnav/screens/room/roomDetail.dart';
 
-class Room extends StatelessWidget {
+class Room extends StatefulWidget {
+  @override
+  _RoomState createState() => _RoomState();
+}
+
+class _RoomState extends State<Room>{
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        // appBar: AppBar(
-        //   title: Text('Event/Room'),
-        // ),
+    return new Scaffold(
+       appBar: AppBar(
+         title: Text('Room'),
+       ),
         body: Container(
             padding: EdgeInsets.all(10),
             child: ListView(
@@ -15,7 +20,7 @@ class Room extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => Detail('LX101')),
+                      MaterialPageRoute(builder: (context) => RoomDetail('LX101')),
                     );
                   },
                   child: Card(
@@ -33,7 +38,7 @@ class Room extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => Detail('LX102')),
+                      MaterialPageRoute(builder: (context) => RoomDetail('LX102')),
                     );
                   },
                   child: Card(
@@ -51,7 +56,7 @@ class Room extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => Detail('LX103')),
+                      MaterialPageRoute(builder: (context) => RoomDetail('LX103')),
                     );
                   },
                   child: Card(
@@ -69,7 +74,7 @@ class Room extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => Detail('LX104')),
+                      MaterialPageRoute(builder: (context) => RoomDetail('LX104')),
                     );
                   },
                   child: Card(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:lxnav/screens/calendar.dart';
 import 'package:lxnav/screens/homepage.dart';
 import 'package:lxnav/screens/search.dart';
 import 'package:lxnav/screens/contact.dart';
@@ -29,9 +30,9 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar>{
   int _selectedPage = 0;
   final _pageOptions = [
     Home(),
-    Search(),
     MapSample(),
-    Contact()
+    Calendar(),
+    Room()
   ];
   @override
   Widget build(BuildContext context){
@@ -55,16 +56,16 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar>{
                 title: Text('Home'),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.search),
-                title: Text('Search'),
-              ),
-              BottomNavigationBarItem(
                 icon: Icon(Icons.map),
                 title: Text('Map'),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.contacts),
-                title: Text('Contact'),
+                icon: Icon(Icons.calendar_today),
+                title: Text('Calendar'),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.room),
+                title: Text('Room'),
               ),
             ],
           ),
