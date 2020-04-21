@@ -22,6 +22,7 @@ dependencies:
   flutter_dotenv: ^2.1.0
   location: 2.3.5
   flutter_polyline_points: ^0.1.0
+  table_calendar: ^2.2.3
   flutter:
     sdk: flutter
   splashscreen: any

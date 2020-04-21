@@ -9,7 +9,7 @@ const LatLng DEST_LOCATION = LatLng(13.6520218,100.4937019);
 const LatLng SOURCE_LOCATION = LatLng(42.747932,100.5339297);
 const double CAMERA_ZOOM = 16;
 const double CAMERA_TILT = 80;
-const double CAMERA_BEARING = 90;
+const double CAMERA_BEARING = 60;
 
 class MapSample extends StatefulWidget {
   @override
@@ -226,7 +226,7 @@ void setPolylines() async {
   }
 }
 void updatePinOnMap() async {
-   
+   if (this.mounted){
    // create a new CameraPosition instance
    // every time the location changes, so the camera
    // follows the pin as it moves with an animation
@@ -241,6 +241,7 @@ final GoogleMapController controller = await _controller.future;
 controller.animateCamera(CameraUpdate.newCameraPosition(cPosition));
    // do this inside the setState() so Flutter gets notified
    // that a widget update is due
+   
    setState(() {
       // updated position
       var pinPosition = LatLng(currentLocation.latitude,
@@ -256,6 +257,7 @@ controller.animateCamera(CameraUpdate.newCameraPosition(cPosition));
          icon: sourceIcon
       ));
    });
+}
 }
 }
 
