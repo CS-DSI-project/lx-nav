@@ -4,11 +4,12 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'dart:async';
 import 'package:location/location.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 const LatLng DEST_LOCATION = LatLng(13.6520218,100.4937019);
 const LatLng SOURCE_LOCATION = LatLng(42.747932,100.5339297);
 const double CAMERA_ZOOM = 16;
 const double CAMERA_TILT = 80;
-const double CAMERA_BEARING = 60;
+const double CAMERA_BEARING = 90;
 
 class MapSample extends StatefulWidget {
   @override
@@ -27,7 +28,7 @@ class _MapState extends State<MapSample> {
   BitmapDescriptor destinationIcon;
   Location location;
   LocationData destinationLocation;
-  String googleAPIKey = '<AIzaSyBwCjS2AIbbPksdQlXMpQjDC1bhxiuRs9w>';
+  String googleAPIKey = DotEnv().env['AIzaSyCCuRz9P2gTsmhsuqar1EbCtxoQRX7qO9E'];
   // simple work map
   @override
   Widget build(BuildContext context) {

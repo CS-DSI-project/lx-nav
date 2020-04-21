@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:lxnav/screens/room/room.dart';
 class Search extends StatefulWidget {
   @override
   _SearchState createState() => _SearchState();
@@ -46,7 +46,7 @@ class _SearchState extends State<Search> {
         ],
       ),
       body: Center(
-        child: Text("Search"),
+        child: Room(),
       ),
     );
   }
