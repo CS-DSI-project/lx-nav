@@ -1,5 +1,6 @@
 import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter/material.dart';
+import 'package:lxnav/screens/event/event.dart';
 
 class Calendar extends StatefulWidget{
   @override
@@ -18,10 +19,10 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin{
     final _selectedDay = DateTime.now();
 
     _events = {
-      _selectedDay: ['Second Presentation', 'Show Application Prototype'],
-      _selectedDay.add(Duration(days: 3)): ['Update Application #1', 'Test System #1'],
-      _selectedDay.add(Duration(days: 4)): ['Update Application #2', 'Test System #2'],
-      _selectedDay.add(Duration(days: 7)): ['Third Presentation', 'Show Application', 'Done!!!'],
+      _selectedDay: ['Lx Building Exhibition', 'Other event 1'],
+      _selectedDay.add(Duration(days: 3)): ['Other event 2', 'Other event 3'],
+      _selectedDay.add(Duration(days: 4)): ['Other event 4', 'Other event 5'],
+      _selectedDay.add(Duration(days: 7)): ['Other event 6'],
     };
 
     _selectedEvents = _events[_selectedDay] ?? [];
@@ -109,7 +110,9 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin{
         margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
         child: ListTile(
           title: Text(event.toString()),
-          onTap: () => print('$event tapped!'),
+          onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => Event(event)));
+          },
         ),
       ))
           .toList(),

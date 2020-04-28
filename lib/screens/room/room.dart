@@ -18,7 +18,7 @@ class _RoomState extends State<Room>{
             child: GridView(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               children: <Widget>[
-                GestureDetector(
+                InkWell(
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => RoomDetail('LX101')),
@@ -38,7 +38,7 @@ class _RoomState extends State<Room>{
                     ),
                   ),
                 ),
-                GestureDetector(
+                InkWell(
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => RoomDetail('LX102')),
@@ -58,7 +58,7 @@ class _RoomState extends State<Room>{
                     ),
                   ),
                 ),
-                GestureDetector(
+                InkWell(
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => RoomDetail('LX103')),
@@ -78,7 +78,7 @@ class _RoomState extends State<Room>{
                     ),
                   ),
                 ),
-                GestureDetector(
+                InkWell(
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => RoomDetail('LX104')),
@@ -99,6 +99,8 @@ class _RoomState extends State<Room>{
                   ),
                 ),
               ],
-            )));
+            )
+        )
+    );
   }
 }
