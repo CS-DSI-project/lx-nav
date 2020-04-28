@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lxnav/screens/event/eventDetail.dart';
 class Event extends StatelessWidget {
   final String name;
   Event(this.name);
@@ -82,9 +83,12 @@ class ListItemWidget extends State<ListDetail> {
                               Padding(
                                 padding: EdgeInsets.fromLTRB(0, 2, 0, 2),
                                 child: RaisedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(builder: (context) => EventDetail(items[index].toString() + ' event')));
+                                  },
                                   child: const Text('Show more', style: TextStyle(
-                                    fontSize: 13,
+                                    fontSize: 12.5,
                                     fontWeight: FontWeight.w400
                                   ),),
                                 ),
