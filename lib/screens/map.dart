@@ -28,80 +28,11 @@ class _MapState extends State<MapSample> {
   BitmapDescriptor destinationIcon;
   Location location;
   LocationData destinationLocation;
-  String googleAPIKey = DotEnv().env['AIzaSyCCuRz9P2gTsmhsuqar1EbCtxoQRX7qO9E'];
+  String googleAPIKey = DotEnv().env['gg_mapKeys'];
   // simple work map
-  @override
-  Widget build(BuildContext context) {
-    CameraPosition initialCameraPosition = CameraPosition(
-
-      target: SOURCE_LOCATION
-   );
-if (currentLocation != null) {
-      initialCameraPosition = CameraPosition(
-         target: LatLng(currentLocation.latitude,
-            currentLocation.longitude),
-
-      );
-   }
-    return Scaffold(
-        appBar: new AppBar(
-          title: new Text("Map"),
-        ),
-        body: GoogleMap(
-          mapType: MapType.normal,
-          myLocationEnabled: true,
-         compassEnabled: true,
-         zoomGesturesEnabled: false,
-         indoorViewEnabled: true,
-          initialCameraPosition: CameraPosition(
-            target: LatLng(13.651881, 100.494545),
-            zoom: 16,
-          ),
-          markers: {
-            Marker(
-                markerId: MarkerId("1"),
-                position: LatLng(13.6491634, 100.492828),
-                infoWindow: InfoWindow(title: "มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี", snippet: "KMUTT")),
-            Marker(markerId: MarkerId("2"),
-                position: LatLng(13.6520218, 100.4937019),
-                infoWindow: InfoWindow(title: "อาคารพหุวิทยาการ LX", snippet: "KMUTT")
-            )
-          },onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-        ),
-        floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToMe,
-        label: Text('My location'),
-        icon: Icon(Icons.near_me),
-      ),
-    );
-  }
-  Future<LocationData> getCurrentLocation() async {
-    Location location = Location();
-    try {
-      return await location.getLocation();
-    } on PlatformException catch (e) {
-      if (e.code == 'PERMISSION_DENIED') {
-        // Permission denied
-      }
-      return null;
-    }
-  }
-   Future _goToMe() async {
-    final GoogleMapController controller = await _controller.future;
-    currentLocation = await getCurrentLocation();
-    controller.animateCamera(CameraUpdate.newCameraPosition(
-        CameraPosition(
-          target: LatLng(
-              currentLocation.latitude,
-              currentLocation.longitude),
-          zoom: 16,
-        )));
-  }
-// @override
-// Widget build(BuildContext context) {
-//    CameraPosition initialCameraPosition = CameraPosition(
+//   @override
+//   Widget build(BuildContext context) {
+//     CameraPosition initialCameraPosition = CameraPosition(
 
 //       target: SOURCE_LOCATION
 //    );
@@ -112,27 +43,101 @@ if (currentLocation != null) {
 
 //       );
 //    }
-// return Scaffold(
-//       body: Stack(
-//       children: <Widget>[
-//          GoogleMap(
-//          myLocationEnabled: true,
+//     return Scaffold(
+//         appBar: new AppBar(
+//           title: new Text("Map"),
+//         ),
+//         body: GoogleMap(
+//           mapType: MapType.normal,
+//           myLocationEnabled: true,
 //          compassEnabled: true,
-//          tiltGesturesEnabled: false,
-//          markers: _markers,
-//          polylines: _polylines,
-//          mapType: MapType.normal,
-//          initialCameraPosition: initialCameraPosition,
-//          onMapCreated: (GoogleMapController controller) {
-//             _controller.complete(controller);
-//             // my map has completed being created;
-//             // i'm ready to show the pins on the map
-//             showPinsOnMap();
-//          })
-//       ],
-//     ),
-//   );
-// }
+//          zoomGesturesEnabled: false,
+//          indoorViewEnabled: true,
+//           initialCameraPosition: CameraPosition(
+//             target: LatLng(13.651881, 100.494545),
+//             zoom: 16,
+//           ),
+//           markers: {
+//             Marker(
+//                 markerId: MarkerId("1"),
+//                 position: LatLng(13.6491634, 100.492828),
+//                 infoWindow: InfoWindow(title: "มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี", snippet: "KMUTT")),
+//             Marker(markerId: MarkerId("2"),
+//                 position: LatLng(13.6520218, 100.4937019),
+//                 infoWindow: InfoWindow(title: "อาคารพหุวิทยาการ LX", snippet: "KMUTT")
+//             )
+//           },onMapCreated: (GoogleMapController controller) {
+//           _controller.complete(controller);
+//         },
+//         ),
+//         floatingActionButton: FloatingActionButton.extended(
+//         onPressed: _goToMe,
+//         label: Text('My location'),
+//         icon: Icon(Icons.near_me),
+//       ),
+//     );
+//   }
+//   Future<LocationData> getCurrentLocation() async {
+//     Location location = Location();
+//     try {
+//       return await location.getLocation();
+//     } on PlatformException catch (e) {
+//       if (e.code == 'PERMISSION_DENIED') {
+//         // Permission denied
+//       }
+//       return null;
+//     }
+//   }
+//    Future _goToMe() async {
+//     final GoogleMapController controller = await _controller.future;
+//     currentLocation = await getCurrentLocation();
+//     controller.animateCamera(CameraUpdate.newCameraPosition(
+//         CameraPosition(
+//           target: LatLng(
+//               currentLocation.latitude,
+//               currentLocation.longitude),
+//           zoom: 16,
+//         )));
+//   }
+
+@override
+Widget build(BuildContext context) {
+   CameraPosition initialCameraPosition = CameraPosition(
+      zoom: CAMERA_ZOOM,
+      tilt: CAMERA_TILT,
+      bearing: CAMERA_BEARING,
+      target: SOURCE_LOCATION
+   );
+if (currentLocation != null) {
+      initialCameraPosition = CameraPosition(
+         target: LatLng(currentLocation.latitude,
+            currentLocation.longitude),
+         zoom: CAMERA_ZOOM,
+         tilt: CAMERA_TILT,
+         bearing: CAMERA_BEARING
+      );
+   }
+return Scaffold(
+      body: Stack(
+      children: <Widget>[
+         GoogleMap(
+         myLocationEnabled: true,
+         compassEnabled: true,
+         tiltGesturesEnabled: false,
+         markers: _markers,
+         polylines: _polylines,
+         mapType: MapType.normal,
+         initialCameraPosition: initialCameraPosition,
+         onMapCreated: (GoogleMapController controller) {
+            _controller.complete(controller);
+            // my map has completed being created;
+            // i'm ready to show the pins on the map
+            showPinsOnMap();
+         })
+      ],
+    ),
+  );
+}
 
 
 
