@@ -20,5 +20,10 @@ class MapSample extends StatefulWidget {
 }
 
 class _MapState extends State<MapSample> {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return null;
+  }
 
 }

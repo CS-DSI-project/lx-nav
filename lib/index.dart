@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:lxnav/screens/calendar.dart';
 import 'package:lxnav/screens/homepage.dart';
-import 'package:lxnav/screens/room/room.dart';
 import 'package:lxnav/screens/map.dart';
 class Index extends StatelessWidget {
   @override
@@ -30,7 +29,6 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar>{
     Home(),
     MapSample(),
     Calendar(),
-    Room()
   ];
   @override
   Widget build(BuildContext context){
@@ -60,10 +58,6 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar>{
               BottomNavigationBarItem(
                 icon: Icon(Icons.calendar_today),
                 title: Text('Calendar'),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.room),
-                title: Text('Room'),
               ),
             ],
           ),

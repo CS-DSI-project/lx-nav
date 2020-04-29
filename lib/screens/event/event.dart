@@ -66,7 +66,7 @@ class ListItemWidget extends State<ListDetail> {
                               Padding(
                                 padding: EdgeInsets.fromLTRB(0, 3, 0, 3),
                                 child: Container(
-                                  child: Text("Information Technology Innovation Show",textAlign: TextAlign.center, style: TextStyle(
+                                  child: Text("Business Conference 2020",textAlign: TextAlign.center, style: TextStyle(
                                     fontWeight: FontWeight.w500
                                   ),),
                                 ),
@@ -74,7 +74,7 @@ class ListItemWidget extends State<ListDetail> {
                               Padding(
                                 padding: EdgeInsets.fromLTRB(0, 5, 0, 2),
                                 child: Container(
-                                  child: Text("Time: 10.00 - 11.30",style: TextStyle(
+                                  child: Text("Time: 10.00 - 15.00",style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w400,
                                   ),),
@@ -85,7 +85,7 @@ class ListItemWidget extends State<ListDetail> {
                                 child: RaisedButton(
                                   onPressed: () {
                                     Navigator.of(context).push(
-                                        MaterialPageRoute(builder: (context) => EventDetail(items[index].toString() + ' event')));
+                                        MaterialPageRoute(builder: (context) => EventDetail(items[index].toString() + ' Event')));
                                   },
                                   child: const Text('Show more', style: TextStyle(
                                     fontSize: 12.5,

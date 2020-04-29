@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class EventDetail extends StatelessWidget {
   final String detailName;
   EventDetail(this.detailName);
@@ -10,11 +11,43 @@ class EventDetail extends StatelessWidget {
           title: Text(detailName),
         ),
         body: SafeArea(
-            child: Container(
-
-            )
-        )
-    );
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Image.asset(
+                'images/LxEvent1.jpg',
+                fit: BoxFit.contain,
+              ),
+              Container(
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 8),
+                child: Text(
+                  'Business Conference 2020',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17.5),
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
+                child: Text(
+                  'Time: 10.00-15.00',
+                  style: TextStyle(
+                    color: Colors.grey[700],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
+                child: Text(
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. " +
+                      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, " +
+                      "when an unknown printer took a galley of type and scrambled it to make a type specimen book. " +
+                      "It has survived not only five centuries, but also the leap into electronic typesetting, remaining " +
+                      "essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing"
+                ),
+              )
+            ],
+          ),
+        ));
   }
 }
-
