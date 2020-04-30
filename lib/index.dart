@@ -8,9 +8,7 @@ class Index extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SafeArea(
-        child: MyBottomNavigationBar()
-      ),
+      home: MyBottomNavigationBar(),
       theme: ThemeData(
         primaryColor: Hexcolor('#ff6600'),
       ),

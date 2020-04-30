@@ -98,25 +98,27 @@ class _MapState extends State<MapSample> {
           bearing: CAMERA_BEARING);
     }
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          GoogleMap(
-              myLocationEnabled: true,
-              compassEnabled: true,
-              tiltGesturesEnabled: true,minMaxZoomPreference: MinMaxZoomPreference(14, 18),
-              
-              markers: _markers,
-              polylines: _polylines,
-              mapType: MapType.normal,
-              initialCameraPosition: initialCameraPosition,
-              onMapCreated: (GoogleMapController controller) {
-                _controller.complete(controller);
-                // my map has completed being created;
-                // i'm ready to show the pins on the map
-                showPinsOnMap();
-              })
-        ],
-      ),
+      body: SafeArea(
+        child: Stack(
+          children: <Widget>[
+            GoogleMap(
+                myLocationEnabled: true,
+                compassEnabled: true,
+                tiltGesturesEnabled: true,minMaxZoomPreference: MinMaxZoomPreference(14, 18),
+
+                markers: _markers,
+                polylines: _polylines,
+                mapType: MapType.normal,
+                initialCameraPosition: initialCameraPosition,
+                onMapCreated: (GoogleMapController controller) {
+                  _controller.complete(controller);
+                  // my map has completed being created;
+                  // i'm ready to show the pins on the map
+                  showPinsOnMap();
+                })
+          ],
+        ),
+      )
     );
   }
 
