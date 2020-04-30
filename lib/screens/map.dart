@@ -7,13 +7,14 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-const double CAMERA_ZOOM = 16;
+const double CAMERA_ZOOM = 18;
 const double CAMERA_TILT = 80;
 const double CAMERA_BEARING = 30;
 const LatLng SOURCE_LOCATION = LatLng(13.652021,100.493701);
 const LatLng DEST_LOCATION = LatLng(13.652021, 100.493701);
 var apiKey = DotEnv().env['gg'];
 
+const timeout = const Duration(seconds: 3);
 class MapSample extends StatefulWidget {
   @override
   _MapState createState() => _MapState();
@@ -39,10 +40,11 @@ class _MapState extends State<MapSample> {
   Location location;
   @override
   void initState() {
+    location = new Location();
     super.initState();
 
     // create an instance of Location
-    location = new Location();
+    location = Location();
     polylinePoints = PolylinePoints();
 
     // subscribe to changes in the user's location
@@ -101,7 +103,8 @@ class _MapState extends State<MapSample> {
           GoogleMap(
               myLocationEnabled: true,
               compassEnabled: true,
-              tiltGesturesEnabled: false,
+              tiltGesturesEnabled: true,minMaxZoomPreference: MinMaxZoomPreference(14, 18),
+              
               markers: _markers,
               polylines: _polylines,
               mapType: MapType.normal,
@@ -120,8 +123,12 @@ class _MapState extends State<MapSample> {
   void showPinsOnMap() {
     // get a LatLng for the source location
     // from the LocationData currentLocation object
+   try {
+     var pinPosition =
+        LatLng(13.652021,100.493701);
+        if(currentLocation != null){
     var pinPosition =
-        LatLng(currentLocation.latitude, currentLocation.longitude);
+        LatLng(currentLocation.latitude, currentLocation.longitude);}
     // get a LatLng out of the LocationData object
     var destPosition =
         LatLng(destinationLocation.latitude, destinationLocation.longitude);
@@ -138,6 +145,10 @@ class _MapState extends State<MapSample> {
     // set the route lines on the map from source to destination
     // for more info follow this tutorial
     setPolylines();
+   } catch (e) {
+     print('$e');
+   }
+    
   }
 
   void setPolylines() async {
@@ -155,6 +166,7 @@ setState(() {
         points: _convertToLatLng(_decodePoly(route)),
         color: Colors.blue));
   }
+  
 );
 
 
@@ -239,6 +251,7 @@ List _decodePoly(String poly) {
           markerId: MarkerId('sourcePin'),
           position: pinPosition, // updated position
           icon: sourceIcon));
+          setPolylines();
     });
   }}
 }
