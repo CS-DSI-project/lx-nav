@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
-        title: Text("NavKMUTT"),
+        title: Text("NavKMUTT")
       ),
       body: Container(
           child: ListView(
