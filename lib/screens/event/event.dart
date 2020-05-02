@@ -21,7 +21,7 @@ class Event extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.more_vert),
+                  icon: Icon(Icons.sort),
                 ),
               ],
             ),
@@ -43,7 +43,7 @@ class Event extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.more_vert),
+                  icon: Icon(Icons.sort),
                 ),
               ],
             )
