@@ -105,7 +105,6 @@ class _MapState extends State<MapSample> {
                 myLocationEnabled: true,
                 compassEnabled: true,
                 tiltGesturesEnabled: true,minMaxZoomPreference: MinMaxZoomPreference(14, 18),
-
                 markers: _markers,
                 polylines: _polylines,
                 mapType: MapType.normal,
