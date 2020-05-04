@@ -13,6 +13,9 @@ class GraphQLData {
     return s;
   }
 }
+Eventlist eventlistFromJson(String str) => Eventlist.fromMap(json.decode(str));
+
+String eventlistToJson(Eventlist data) => json.encode(data.toMap());
 
 class Eventlist {
     Data data;
@@ -20,10 +23,6 @@ class Eventlist {
     Eventlist({
         this.data,
     });
-
-    factory Eventlist.fromJson(String str) => Eventlist.fromMap(json.decode(str));
-
-    String toJson() => json.encode(toMap());
 
     factory Eventlist.fromMap(Map<String, dynamic> json) => Eventlist(
         data: Data.fromMap(json["data"]),
@@ -33,16 +32,13 @@ class Eventlist {
         "data": data.toMap(),
     };
 }
+
 class Data {
     List<Event> events;
 
     Data({
         this.events,
     });
-
-    factory Data.fromJson(String str) => Data.fromMap(json.decode(str));
-
-    String toJson() => json.encode(toMap());
 
     factory Data.fromMap(Map<String, dynamic> json) => Data(
         events: List<Event>.from(json["events"].map((x) => Event.fromMap(x))),
@@ -71,10 +67,6 @@ class Event {
         this.startDate,
         this.endDate,
     });
-
-    factory Event.fromJson(String str) => Event.fromMap(json.decode(str));
-
-    String toJson() => json.encode(toMap());
 
     factory Event.fromMap(Map<String, dynamic> json) => Event(
         id: json["id"],

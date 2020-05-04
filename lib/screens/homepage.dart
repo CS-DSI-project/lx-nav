@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
+import 'package:lxnav/models/graphql.dart';
 final List<String> imgList = [
   'images/LxBuilding1.png',
   'images/LxBuilding2.png',
@@ -22,6 +22,14 @@ final List<Widget> imageSliders = imgList
           ),
         ))
     .toList();
+
+//     Future<List<Event>> getInfo() async {
+// final GraphQLData test = new GraphQLData();
+// var q ="query{events{id name desc body picture start_date end_date}}"; 
+// var getData = await test.query(q);
+// final eventlist = eventlistFromJson(getData.body);
+// return eventlist.data.events.toList();
+//     }
 
 class Home extends StatefulWidget {
   @override

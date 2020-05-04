@@ -9,9 +9,10 @@ Future<void> getInfo() async {
 final GraphQLData test = new GraphQLData();
 var q ="query{events{id name desc body picture start_date end_date}}"; 
 var getData = await test.query(q);
-Eventlist e = Eventlist.fromJson(getData.body);
 
-print(e);
+final eventlist = eventlistFromJson(getData.body);
+eventlist.data.events.forEach((f) => print(f.name+f.body));
+
 }
 
 class Event extends StatelessWidget {
