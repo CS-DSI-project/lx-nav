@@ -6,7 +6,7 @@ import 'package:lxnav/models/graphql.dart';
 //  var getEventData= await  GraphQLData(query("query{events{id name}}"));
 
 Future<void> getInfo() async {
-GraphQLData test;
+final GraphQLData test = new GraphQLData();
 var q ="query{events{id name}}"; 
 var getData = await test.query(q);
 print(getData.body);
