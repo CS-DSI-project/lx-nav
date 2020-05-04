@@ -1,5 +1,16 @@
 import 'package:flutter/material.dart';
+
 import 'package:lxnav/screens/event/eventDetail.dart';
+import 'package:lxnav/models/graphql.dart';
+
+//  var getEventData= await  GraphQLData(query("query{events{id name}}"));
+
+Future<void> getInfo() async {
+GraphQLData test;
+var q ="query{events{id name}}"; 
+var getData = await test.query(q);
+print(getData.body);
+}
 
 class Event extends StatelessWidget {
   final String name;
@@ -7,6 +18,8 @@ class Event extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    getInfo();
     if (name.length > 22) {
       return new Scaffold(
           body: NestedScrollView(
