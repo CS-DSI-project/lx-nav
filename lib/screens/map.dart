@@ -64,11 +64,11 @@ class _MapState extends State<MapSample> {
 
   void setSourceAndDestinationIcons() async {
     sourceIcon = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(devicePixelRatio: 2.5), 'images/driving_pin.png');
+        ImageConfiguration(devicePixelRatio: 2.5), 'images/man1.png');
 
     destinationIcon = await BitmapDescriptor.fromAssetImage(
         ImageConfiguration(devicePixelRatio: 2.5),
-        'images/destination_map_marker.png');
+        'images/track.png');
   }
 
   void setInitialLocation() async {
