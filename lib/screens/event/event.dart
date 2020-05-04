@@ -7,9 +7,11 @@ import 'package:lxnav/models/graphql.dart';
 
 Future<void> getInfo() async {
 final GraphQLData test = new GraphQLData();
-var q ="query{events{id name}}"; 
+var q ="query{events{id name desc body picture start_date end_date}}"; 
 var getData = await test.query(q);
-print(getData.body);
+Eventlist e = Eventlist.fromJson(getData.body);
+
+print(e);
 }
 
 class Event extends StatelessWidget {
@@ -18,8 +20,7 @@ class Event extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-    getInfo();
+ getInfo();
     if (name.length > 22) {
       return new Scaffold(
           body: NestedScrollView(
@@ -112,6 +113,7 @@ class ListDetail extends StatefulWidget {
 
 class ListItemWidget extends State<ListDetail> {
   List items = getDummyList();
+  List dataItems;
 
   @override
   Widget build(BuildContext context) {
@@ -210,4 +212,5 @@ class ListItemWidget extends State<ListDetail> {
     });
     return list;
   }
+
 }
