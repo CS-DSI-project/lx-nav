@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 
 class GraphQLData {
@@ -13,18 +12,18 @@ class GraphQLData {
     return s;
   }
 }
-Eventlist eventlistFromJson(String str) => Eventlist.fromMap(json.decode(str));
+EventList eventListFromJson(String str) => EventList.fromMap(json.decode(str));
 
-String eventlistToJson(Eventlist data) => json.encode(data.toMap());
+String eventListToJson(EventList data) => json.encode(data.toMap());
 
-class Eventlist {
+class EventList {
     Data data;
 
-    Eventlist({
+    EventList({
         this.data,
     });
 
-    factory Eventlist.fromMap(Map<String, dynamic> json) => Eventlist(
+    factory EventList.fromMap(Map<String, dynamic> json) => EventList(
         data: Data.fromMap(json["data"]),
     );
 
@@ -34,14 +33,14 @@ class Eventlist {
 }
 
 class Data {
-    List<Event> events;
+    List<EventData> events;
 
     Data({
         this.events,
     });
 
     factory Data.fromMap(Map<String, dynamic> json) => Data(
-        events: List<Event>.from(json["events"].map((x) => Event.fromMap(x))),
+        events: List<EventData>.from(json["events"].map((x) => EventData.fromMap(x))),
     );
 
     Map<String, dynamic> toMap() => {
@@ -49,7 +48,7 @@ class Data {
     };
 }
 
-class Event {
+class EventData {
     String id;
     String name;
     String desc;
@@ -58,7 +57,7 @@ class Event {
     String startDate;
     String endDate;
 
-    Event({
+    EventData({
         this.id,
         this.name,
         this.desc,
@@ -68,7 +67,7 @@ class Event {
         this.endDate,
     });
 
-    factory Event.fromMap(Map<String, dynamic> json) => Event(
+    factory EventData.fromMap(Map<String, dynamic> json) => EventData(
         id: json["id"],
         name: json["name"],
         desc: json["desc"],
@@ -87,4 +86,12 @@ class Event {
         "start_date": startDate,
         "end_date": endDate,
     };
+}
+
+Future<List<EventData>> getInfo() async {
+  final GraphQLData test = new GraphQLData();
+  var q = "query{events{id name desc body picture start_date end_date}}";
+  var getData = await test.query(q);
+  final eventList = eventListFromJson(getData.body);
+  return eventList.data.events;
 }

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class EventDetail extends StatelessWidget {
-  final String detailName;
-  EventDetail(this.detailName);
+  final String roomName;
+  final String eventName;
+  final String detail; 
+  EventDetail(this.roomName, this.eventName, this.detail);
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: AppBar(
-          title: Text(detailName),
+          title: Text(roomName),
         ),
         body: SafeArea(
           child: Column(
@@ -23,7 +25,7 @@ class EventDetail extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 8),
                 child: Text(
-                  'Business Conference 2020',
+                  eventName,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17.5),
                 ),
               ),
@@ -39,11 +41,7 @@ class EventDetail extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
                 child: Text(
-                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. " +
-                      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, " +
-                      "when an unknown printer took a galley of type and scrambled it to make a type specimen book. " +
-                      "It has survived not only five centuries, but also the leap into electronic typesetting, remaining " +
-                      "essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing"
+                  detail
                 ),
               )
             ],
