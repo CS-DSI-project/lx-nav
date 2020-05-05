@@ -40,9 +40,7 @@ class EventDetail extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
-                child: Text(
-                  detail
-                ),
+                child: Text(detail),
               )
             ],
           ),

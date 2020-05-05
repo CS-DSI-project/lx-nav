@@ -192,7 +192,7 @@ class ListItemWidget extends State<ListDetail> {
                         ));
                   }));
         } else{
-          return Text('Error');
+          return Container();
         }
       }
     );
