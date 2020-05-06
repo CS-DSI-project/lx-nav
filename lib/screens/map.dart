@@ -9,7 +9,7 @@ import 'dart:convert';
 
 const double CAMERA_ZOOM = 18;
 const double CAMERA_TILT = 80;
-const double CAMERA_BEARING = 30;
+const double CAMERA_BEARING = 270;
 const LatLng SOURCE_LOCATION = LatLng(13.652021,100.493701);
 const LatLng DEST_LOCATION = LatLng(13.652021, 100.493701);
 var apiKey = DotEnv().env['gg'];
@@ -122,6 +122,7 @@ class _MapState extends State<MapSample> {
   }
 
   void showPinsOnMap() {
+    if(this.mounted){
     // get a LatLng for the source location
     // from the LocationData currentLocation object
    try {
@@ -143,13 +144,15 @@ class _MapState extends State<MapSample> {
         markerId: MarkerId('destPin'),
         position: destPosition,
         icon: destinationIcon));
+    _markers.add(Marker(markerId: MarkerId('LX'),
+    position: destPosition));
     // set the route lines on the map from source to destination
     // for more info follow this tutorial
     setPolylines();
    } catch (e) {
      print('$e');
    }
-    
+    }
   }
 
   void setPolylines() async {

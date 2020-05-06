@@ -5,7 +5,7 @@ import 'package:lxnav/models/graphql.dart';
 class Event extends StatelessWidget {
   final String name;
   Event(this.name);
-
+  
   @override
   Widget build(BuildContext context) {
     if (name.length > 22) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:lxnav/models/graphql.dart';
+
 final List<String> imgList = [
   'images/LxBuilding1.png',
   'images/LxBuilding2.png',
