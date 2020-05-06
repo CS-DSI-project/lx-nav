@@ -2,22 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:lxnav/screens/event/eventDetail.dart';
 import 'package:lxnav/models/graphql.dart';
 
-class Event extends StatelessWidget {
-  final String name;
+class Event extends StatefulWidget {
+  final name;
   Event(this.name);
-  
+  _EventState createState() => _EventState();
+}
+class _EventState extends State<Event> {
+  bool isSearching = false;
   @override
   Widget build(BuildContext context) {
-    if (name.length > 22) {
+    if (widget.name.length > 22) {
       return new Scaffold(
           body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverMultilineAppBar(
-              title: name,
+              title: widget.name,
               actions: <Widget>[
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    this.isSearching = !this.isSearching;
+                  },
                   icon: Icon(Icons.search),
                 ),
                 IconButton(
@@ -36,7 +41,7 @@ class Event extends StatelessWidget {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverAppBar(
-              title: Text(name),
+              title: Text(widget.name),
               actions: <Widget>[
                 IconButton(
                   onPressed: () {},
@@ -57,7 +62,7 @@ class Event extends StatelessWidget {
 }
 
 class SliverMultilineAppBar extends StatelessWidget {
-  final String title;
+  final title;
   final Widget leading;
   final List<Widget> actions;
 
@@ -196,12 +201,5 @@ class ListItemWidget extends State<ListDetail> {
         }
       }
     );
-  }
-
-  static List getDummyList() {
-    List list = List.generate(6, (i) {
-      return "LX-10${i + 1}";
-    });
-    return list;
   }
 }
