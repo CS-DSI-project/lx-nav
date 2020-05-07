@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class EventDetail extends StatelessWidget {
   final String roomName;
   final String eventName;
-  final String detail; 
+  final String detail;
   EventDetail(this.roomName, this.eventName, this.detail);
 
   @override
@@ -13,6 +13,7 @@ class EventDetail extends StatelessWidget {
           title: Text(roomName),
         ),
         body: SafeArea(
+            child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
@@ -22,14 +23,14 @@ class EventDetail extends StatelessWidget {
                 'images/LxEvent1.jpg',
                 fit: BoxFit.contain,
               ),
-              Container(
+              Padding(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 8),
                 child: Text(
                   eventName,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17.5),
                 ),
               ),
-              Container(
+              Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
                 child: Text(
                   'Time: 10.00-15.00',
@@ -41,9 +42,13 @@ class EventDetail extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
                 child: Text(detail),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
+                child: Image.asset('images/insideMap.jpg'),
               )
             ],
           ),
-        ));
+        )));
   }
 }

@@ -3,8 +3,9 @@ import 'package:lxnav/screens/event/eventDetail.dart';
 import 'package:lxnav/models/graphql.dart';
 
 class Event extends StatefulWidget {
-  final name;
+  final String name;
   Event(this.name);
+  @override
   _EventState createState() => _EventState();
 }
 class _EventState extends State<Event> {
@@ -17,11 +18,14 @@ class _EventState extends State<Event> {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverMultilineAppBar(
-              title: widget.name,
+              title: !isSearching?widget.name:"GG",
               actions: <Widget>[
                 IconButton(
                   onPressed: () {
-                    this.isSearching = !this.isSearching;
+                    setState(() {
+                      this.isSearching = !this.isSearching;
+                    });
+                    print(isSearching);
                   },
                   icon: Icon(Icons.search),
                 ),
@@ -62,7 +66,7 @@ class _EventState extends State<Event> {
 }
 
 class SliverMultilineAppBar extends StatelessWidget {
-  final title;
+  final String title;
   final Widget leading;
   final List<Widget> actions;
 

@@ -20,7 +20,7 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin{
 
     _events = {
       _selectedDay: ['Lx Building Exhibition Day 1'],
-      _selectedDay.add(Duration(days: 1)): ['Lx Building'],
+      _selectedDay.add(Duration(days: 1)): ['Lx Building Exhibition Day 2', 'Other Event 1'],
       _selectedDay.add(Duration(days: 2)): ['Lx Building Exhibition Day3'],
       _selectedDay.add(Duration(days: 3)): ['Lx Building Exhibition Day4'],
     };
