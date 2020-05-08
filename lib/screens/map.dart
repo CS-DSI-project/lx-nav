@@ -10,11 +10,13 @@ import 'dart:convert';
 const double CAMERA_ZOOM = 18;
 const double CAMERA_TILT = 80;
 const double CAMERA_BEARING = 270;
-const LatLng SOURCE_LOCATION = LatLng(13.652021,100.493701);
+const LatLng SOURCE_LOCATION = LatLng(13.652021, 100.493701);
 const LatLng DEST_LOCATION = LatLng(13.652021, 100.493701);
 var apiKey = DotEnv().env['gg'];
+bool navi = false;
 
 const timeout = const Duration(seconds: 3);
+
 class MapSample extends StatefulWidget {
   @override
   _MapState createState() => _MapState();
@@ -49,13 +51,16 @@ class _MapState extends State<MapSample> {
 
     // subscribe to changes in the user's location
     // by "listening" to the location's onLocationChanged event
+    if(navi == true){
     location.onLocationChanged.listen((LocationData cLoc) {
       // cLoc contains the lat and long of the
       // current user's position in real time,
       // so we're holding on to it
       currentLocation = cLoc;
       updatePinOnMap();
+      print(navi);
     });
+    }
     // set custom marker pins
     setSourceAndDestinationIcons();
     // set the initial location
@@ -67,8 +72,7 @@ class _MapState extends State<MapSample> {
         ImageConfiguration(devicePixelRatio: 2.5), 'images/man1.png');
 
     destinationIcon = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(devicePixelRatio: 2.5),
-        'images/track.png');
+        ImageConfiguration(devicePixelRatio: 2.5), 'images/track.png');
   }
 
   void setInitialLocation() async {
@@ -86,10 +90,10 @@ class _MapState extends State<MapSample> {
   @override
   Widget build(BuildContext context) {
     CameraPosition initialCameraPosition = CameraPosition(
-        zoom: CAMERA_ZOOM,
-        tilt: CAMERA_TILT,
-        bearing: CAMERA_BEARING,
-        target: SOURCE_LOCATION);
+        zoom: 15,
+        tilt: 0,
+        bearing: 0,
+        target: LatLng(13.652021, 100.493701));
     if (currentLocation != null) {
       initialCameraPosition = CameraPosition(
           target: LatLng(currentLocation.latitude, currentLocation.longitude),
@@ -98,84 +102,97 @@ class _MapState extends State<MapSample> {
           bearing: CAMERA_BEARING);
     }
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: <Widget>[
-            GoogleMap(
-                myLocationEnabled: true,
-                compassEnabled: true,
-                tiltGesturesEnabled: true,minMaxZoomPreference: MinMaxZoomPreference(14, 18),
-                markers: _markers,
-                polylines: _polylines,
-                mapType: MapType.normal,
-                initialCameraPosition: initialCameraPosition,
-                onMapCreated: (GoogleMapController controller) {
-                  _controller.complete(controller);
-                  // my map has completed being created;
-                  // i'm ready to show the pins on the map
-                  showPinsOnMap();
-                })
-          ],
-        ),
-      )
-    );
+        body: SafeArea(
+      child: Stack(
+        children: <Widget>[
+          GoogleMap(
+              myLocationEnabled: true,
+              compassEnabled: true,
+              tiltGesturesEnabled: true,
+              minMaxZoomPreference: MinMaxZoomPreference(14, 18),
+              markers: _markers,
+              polylines: _polylines,
+              mapType: MapType.normal,
+              initialCameraPosition: initialCameraPosition,
+              onMapCreated: (GoogleMapController controller) {
+                _controller.complete(controller);
+                // my map has completed being created;
+                // i'm ready to show the pins on the map
+                showPinsOnMap();
+              }),
+              Positioned(child: FloatingActionButton(onPressed: (){
+                _navigate();
+              }, child: Icon(Icons.directions),),top: 500,left:333,
+              )
+        ],
+      ),
+    )
+          );
+    
   }
-
+  void _navigate(){
+    setState(() {
+      location.onLocationChanged.listen((LocationData cLoc) {
+      // cLoc contains the lat and long of the
+      // current user's position in real time,
+      // so we're holding on to it
+      currentLocation = cLoc;
+      updatePinOnMap();
+      setPolylines();
+      print(navi);
+    });
+    });
+  }
   void showPinsOnMap() {
-    if(this.mounted){
-    // get a LatLng for the source location
-    // from the LocationData currentLocation object
-   try {
-     var pinPosition =
-        LatLng(13.652021,100.493701);
-        if(currentLocation != null){
-    var pinPosition =
-        LatLng(currentLocation.latitude, currentLocation.longitude);}
-    // get a LatLng out of the LocationData object
-    var destPosition =
-        LatLng(destinationLocation.latitude, destinationLocation.longitude);
-    // add the initial source location pin
-    _markers.add(Marker(
-        markerId: MarkerId('sourcePin'),
-        position: pinPosition,
-        icon: sourceIcon));
-    // destination pin
-    _markers.add(Marker(
-        markerId: MarkerId('destPin'),
-        position: destPosition,
-        icon: destinationIcon));
-    _markers.add(Marker(markerId: MarkerId('LX'),
-    position: destPosition));
-    // set the route lines on the map from source to destination
-    // for more info follow this tutorial
-    setPolylines();
-   } catch (e) {
-     print('$e');
-   }
+    if (this.mounted) {
+      // get a LatLng for the source location
+      // from the LocationData currentLocation object
+      try {
+        var pinPosition = LatLng(13.652021, 100.493701);
+        if (currentLocation != null) {
+          var pinPosition =
+              LatLng(currentLocation.latitude, currentLocation.longitude);
+        }
+        // get a LatLng out of the LocationData object
+        var destPosition =
+            LatLng(destinationLocation.latitude, destinationLocation.longitude);
+        // add the initial source location pin
+        _markers.add(Marker(
+            markerId: MarkerId('sourcePin'),
+            position: pinPosition,
+            icon: sourceIcon));
+        // destination pin
+        _markers.add(Marker(
+            markerId: MarkerId('destPin'),
+            position: destPosition,
+            icon: destinationIcon));
+        _markers.add(Marker(markerId: MarkerId('LX'), position: destPosition));
+        // set the route lines on the map from source to destination
+        // for more info follow this tutorial
+        setPolylines();
+      } catch (e) {
+        print('$e');
+      }
     }
   }
-
+  
   void setPolylines() async {
+    if(this.mounted){
     String url =
         "https://maps.googleapis.com/maps/api/directions/json?origin=${currentLocation.latitude},${currentLocation.longitude}&destination=${DEST_LOCATION.latitude},${DEST_LOCATION.longitude}&mode=driving&key=$apiKey";
     http.Response response = await http.get(url);
     Map values = jsonDecode(response.body);
     String route = values["routes"][0]["overview_polyline"]["points"];
     print(values);
-setState(() {
-  
-    _polylines.add(Polyline(
-        polylineId: PolylineId('poly'),
-        width: 4,
-        points: _convertToLatLng(_decodePoly(route)),
-        color: Colors.blue));
-  }
-  
-);
+    setState(() {
+      _polylines.add(Polyline(
+          polylineId: PolylineId('poly'),
+          width: 4,
+          points: _convertToLatLng(_decodePoly(route)),
+          color: Colors.blue));
+    });
 
-
-
-    // List<PointLatLng> result = 
+    // List<PointLatLng> result =
     //     values["routes"][0]["overview_polyline"]["points"];
     // if (result.isNotEmpty) {
     //   result.forEach((PointLatLng point) {
@@ -190,7 +207,8 @@ setState(() {
     //   });
     // }
   }
-List _decodePoly(String poly) {
+  }
+  List _decodePoly(String poly) {
     var list = poly.codeUnits;
     var lList = new List();
     int index = 0;
@@ -219,6 +237,7 @@ List _decodePoly(String poly) {
 
     return lList;
   }
+
   List<LatLng> _convertToLatLng(List points) {
     List<LatLng> result = <LatLng>[];
     for (int i = 0; i < points.length; i++) {
@@ -228,34 +247,36 @@ List _decodePoly(String poly) {
     }
     return result;
   }
-  void updatePinOnMap() async {
-    if(this.mounted){
-    // create a new CameraPosition instance
-    // every time the location changes, so the camera
-    // follows the pin as it moves with an animation
-    CameraPosition cPosition = CameraPosition(
-      zoom: CAMERA_ZOOM,
-      tilt: CAMERA_TILT,
-      bearing: CAMERA_BEARING,
-      target: LatLng(currentLocation.latitude, currentLocation.longitude),
-    );
-    final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(cPosition));
-    // do this inside the setState() so Flutter gets notified
-    // that a widget update is due
-    setState(() {
-      // updated position
-      var pinPosition =
-          LatLng(currentLocation.latitude, currentLocation.longitude);
 
-      // the trick is to remove the marker (by id)
-      // and add it again at the updated location
-      _markers.removeWhere((m) => m.markerId.value == 'sourcePin');
-      _markers.add(Marker(
-          markerId: MarkerId('sourcePin'),
-          position: pinPosition, // updated position
-          icon: sourceIcon));
-          setPolylines();
-    });
-  }}
+  void updatePinOnMap() async {
+    if (this.mounted) {
+      // create a new CameraPosition instance
+      // every time the location changes, so the camera
+      // follows the pin as it moves with an animation
+      CameraPosition cPosition = CameraPosition(
+        zoom: CAMERA_ZOOM,
+        tilt: CAMERA_TILT,
+        bearing: CAMERA_BEARING,
+        target: LatLng(currentLocation.latitude, currentLocation.longitude),
+      );
+      final GoogleMapController controller = await _controller.future;
+      controller.animateCamera(CameraUpdate.newCameraPosition(cPosition));
+      // do this inside the setState() so Flutter gets notified
+      // that a widget update is due
+      setState(() {
+        // updated position
+        var pinPosition =
+            LatLng(currentLocation.latitude, currentLocation.longitude);
+
+        // the trick is to remove the marker (by id)
+        // and add it again at the updated location
+        _markers.removeWhere((m) => m.markerId.value == 'sourcePin');
+        _markers.add(Marker(
+            markerId: MarkerId('sourcePin'),
+            position: pinPosition, // updated position
+            icon: sourceIcon));
+        setPolylines();
+      });
+    }
+  }
 }
