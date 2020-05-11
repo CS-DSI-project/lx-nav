@@ -3,7 +3,7 @@
 A application that can help your navigate and know detail of LX Exhibition.
 
 This project is part of CSC231 Agile Software Engineering and CSC234 User-Credente Mobile Application Development
-
+SIT, KMUTT
 
 
 ## Getting Started
