@@ -2,7 +2,9 @@
 
 A application that can help your navigate and know detail of LX Exhibition.
 
-This project is part of CSC231 Agile software engineering and CSC234 User centre mobile application
+This project is part of CSC231 Agile Software Engineering and CSC234 User-Credente Mobile Application Development
+
+
 
 ## Getting Started
 
