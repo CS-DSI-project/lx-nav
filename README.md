@@ -1,6 +1,8 @@
 # NavKMUTT
 
-A application that can help your navigate and know detail of LX Exhibition
+A application that can help your navigate and know detail of LX Exhibition.
+
+This project is part of CSC231 Agile software engineering and CSC234 User centre mobile application
 
 ## Getting Started
 
@@ -8,7 +10,7 @@ This project is a starting point for a Flutter application.
 
 **Installing**
 
-Rename file `.env-example` to `.env` and put your Google API key 
+Rename file `.env-example` to `.env` and put your Google API key
 
 Clone the project and run the script to install all dependencies.
 
