@@ -131,6 +131,7 @@ class _MapState extends State<MapSample> {
     
   }
   void _navigate(){
+    navi= !navi;
     setState(() {
       location.onLocationChanged.listen((LocationData cLoc) {
       // cLoc contains the lat and long of the
@@ -189,7 +190,7 @@ class _MapState extends State<MapSample> {
           polylineId: PolylineId('poly'),
           width: 4,
           points: _convertToLatLng(_decodePoly(route)),
-          color: Colors.blue));
+          color: Colors.blue[900]));
     });
 
     // List<PointLatLng> result =
