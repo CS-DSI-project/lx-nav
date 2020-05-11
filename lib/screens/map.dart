@@ -51,15 +51,15 @@ class _MapState extends State<MapSample> {
 
     // subscribe to changes in the user's location
     // by "listening" to the location's onLocationChanged event
-    if(navi == true){
-    location.onLocationChanged.listen((LocationData cLoc) {
-      // cLoc contains the lat and long of the
-      // current user's position in real time,
-      // so we're holding on to it
-      currentLocation = cLoc;
-      updatePinOnMap();
-      print(navi);
-    });
+    if (navi == true) {
+      location.onLocationChanged.listen((LocationData cLoc) {
+        // cLoc contains the lat and long of the
+        // current user's position in real time,
+        // so we're holding on to it
+        currentLocation = cLoc;
+        updatePinOnMap();
+        print(navi);
+      });
     }
     // set custom marker pins
     setSourceAndDestinationIcons();
@@ -90,10 +90,7 @@ class _MapState extends State<MapSample> {
   @override
   Widget build(BuildContext context) {
     CameraPosition initialCameraPosition = CameraPosition(
-        zoom: 15,
-        tilt: 0,
-        bearing: 0,
-        target: LatLng(13.652021, 100.493701));
+        zoom: 15, tilt: 0, bearing: 0, target: LatLng(13.652021, 100.493701));
     if (currentLocation != null) {
       initialCameraPosition = CameraPosition(
           target: LatLng(currentLocation.latitude, currentLocation.longitude),
@@ -102,48 +99,53 @@ class _MapState extends State<MapSample> {
           bearing: CAMERA_BEARING);
     }
     return Scaffold(
-        body: SafeArea(
-      child: Stack(
-        children: <Widget>[
-          GoogleMap(
-              myLocationEnabled: true,
-              compassEnabled: true,
-              tiltGesturesEnabled: true,
-              minMaxZoomPreference: MinMaxZoomPreference(14, 18),
-              markers: _markers,
-              polylines: _polylines,
-              mapType: MapType.normal,
-              initialCameraPosition: initialCameraPosition,
-              onMapCreated: (GoogleMapController controller) {
-                _controller.complete(controller);
-                // my map has completed being created;
-                // i'm ready to show the pins on the map
-                showPinsOnMap();
-              }),
-              Positioned(child: FloatingActionButton(onPressed: (){
-                _navigate();
-              }, child: Icon(Icons.directions),),top: 500,left:333,
-              )
-        ],
+      body: SafeArea(
+        child: Stack(
+          children: <Widget>[
+            GoogleMap(
+                myLocationEnabled: true,
+                compassEnabled: true,
+                tiltGesturesEnabled: true,
+                minMaxZoomPreference: MinMaxZoomPreference(14, 18),
+                markers: _markers,
+                polylines: _polylines,
+                mapType: MapType.normal,
+                initialCameraPosition: initialCameraPosition,
+                onMapCreated: (GoogleMapController controller) {
+                  _controller.complete(controller);
+                  // my map has completed being created;
+                  // i'm ready to show the pins on the map
+                  showPinsOnMap();
+                }),
+          ],
+        ),
       ),
-    )
-          );
-    
+      floatingActionButton: Align(
+          child: FloatingActionButton(
+            onPressed: () {
+              _navigate();
+            },
+            child: Icon(Icons.directions),
+          ),
+          alignment: Alignment(1.07, 0.7)),
+    );
   }
-  void _navigate(){
-    navi= !navi;
+
+  void _navigate() {
+    navi = !navi;
     setState(() {
       location.onLocationChanged.listen((LocationData cLoc) {
-      // cLoc contains the lat and long of the
-      // current user's position in real time,
-      // so we're holding on to it
-      currentLocation = cLoc;
-      updatePinOnMap();
-      setPolylines();
-      print(navi);
-    });
+        // cLoc contains the lat and long of the
+        // current user's position in real time,
+        // so we're holding on to it
+        currentLocation = cLoc;
+        updatePinOnMap();
+        setPolylines();
+        print(navi);
+      });
     });
   }
+
   void showPinsOnMap() {
     if (this.mounted) {
       // get a LatLng for the source location
@@ -176,39 +178,25 @@ class _MapState extends State<MapSample> {
       }
     }
   }
-  
-  void setPolylines() async {
-    if(this.mounted){
-    String url =
-        "https://maps.googleapis.com/maps/api/directions/json?origin=${currentLocation.latitude},${currentLocation.longitude}&destination=${DEST_LOCATION.latitude},${DEST_LOCATION.longitude}&mode=driving&key=$apiKey";
-    http.Response response = await http.get(url);
-    Map values = jsonDecode(response.body);
-    String route = values["routes"][0]["overview_polyline"]["points"];
-    print(values);
-    setState(() {
-      _polylines.add(Polyline(
-          polylineId: PolylineId('poly'),
-          width: 4,
-          points: _convertToLatLng(_decodePoly(route)),
-          color: Colors.blue[900]));
-    });
 
-    // List<PointLatLng> result =
-    //     values["routes"][0]["overview_polyline"]["points"];
-    // if (result.isNotEmpty) {
-    //   result.forEach((PointLatLng point) {
-    //     polylineCoordinates.add(LatLng(point.latitude, point.longitude));
-    //   });
-    //   setState(() {
-    //     _polylines.add(Polyline(
-    //         width: 5, // set the width of the polylines
-    //         polylineId: PolylineId('poly'),
-    //         color: Color.fromARGB(255, 40, 122, 198),
-    //         points: polylineCoordinates));
-    //   });
-    // }
+  void setPolylines() async {
+    if (this.mounted) {
+      String url =
+          "https://maps.googleapis.com/maps/api/directions/json?origin=${currentLocation.latitude},${currentLocation.longitude}&destination=${DEST_LOCATION.latitude},${DEST_LOCATION.longitude}&mode=driving&key=$apiKey";
+      http.Response response = await http.get(url);
+      Map values = jsonDecode(response.body);
+      String route = values["routes"][0]["overview_polyline"]["points"];
+      print(values);
+      setState(() {
+        _polylines.add(Polyline(
+            polylineId: PolylineId('poly'),
+            width: 4,
+            points: _convertToLatLng(_decodePoly(route)),
+            color: Colors.blue[900]));
+      });
+    }
   }
-  }
+
   List _decodePoly(String poly) {
     var list = poly.codeUnits;
     var lList = new List();
